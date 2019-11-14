@@ -1,18 +1,18 @@
 
-phonebook = {'David Schneider': '813-504-1955'}
+phonebook = {}
 # display a menu
 def menu():
     menu = """
 
-Electronic Phone Book
-=====================
-1. Look up an entry
-2. Set an entry
-3. Delete an entry
-4. List all entries
-5. Quit
+        Electronic Phone Book
+        =====================
+        1. Look up an entry
+        2. Set an entry
+        3. Delete an entry
+        4. List all entries
+        5. Quit
 
-"""
+        """
     print(menu)
     user_input = input("What do you want to do (1-5)? ")
     return user_input
@@ -37,29 +37,33 @@ def list_all_entries():
     for name in phonebook:
         print(f"{name}: {phonebook[name]}")
     
-# quit program
-
 def main():
 
     is_running = True
     while is_running:
         user_input = menu()
-        print(user_input)
+        # print(user_input)
         if user_input == "1":
             name_input = input("Enter name for lookup: ")
-            lookup_result = look_up_entry(name_input)
-            print(lookup_result)
+            if name_input in phonebook:
+                lookup_result = look_up_entry(name_input)
+                print(lookup_result)
+            else:
+                print("Name not in phonebook.")
         elif user_input == "2":
             entry_name = input("Enter name: ")
-            entry_number = input("Enter phonenumber: ")
+            entry_num2ber = input("Enter phonenumber: ")
             new_entry = set_entry(entry_name, entry_number)
-            print(f"Entry stored for {entry_name}")
+            print(f"Entry stored for {entry_name}.")
         elif user_input == "3":
             entry_name = input("Enter name: ")
             delete_entry(entry_name)
-            print(f"Entry deleted for {entry_name}")
+            print(f"Entry deleted for {entry_name}.")
         elif user_input == "4":
+            list_all_entries()
         elif user_input == "5":
-            pass
+            is_running = False
         else:
+            print("Please enter a valid choice (1-5)")
+
 main()
