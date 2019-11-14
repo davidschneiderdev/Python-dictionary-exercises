@@ -6,6 +6,11 @@ phonebook_dict = {
 }
 
 print(phonebook_dict['Elizabeth'])
+
 phonebook_dict['Kareem'] = '938-489-1234'
-del phonebook_dict['Alice']['703-493-1834']
+
+phonebook_dict['Alice'] = ''
+
+phonebook_dict['Bob'] = '968-345-2345'
+
 print(phonebook_dict)
